@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div> <a href="{% url 'index' %}" style="color: black;text-decoration: none;"><- Regresar</a></div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Sing Up</button>
+    </form>
+    <a href="{% url 'login' %}">Login</a>
+</body>
+</html>

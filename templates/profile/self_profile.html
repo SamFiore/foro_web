@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.username}}</title>
+</head>
+<body>
+    <div> <a href="{% url 'index' %}" style="color: black;text-decoration: none;"><- Regresar</a></div>
+    <h1>Name: {{user.username}}</h1>
+    <div>
+        {% for post in user_posts %}
+        <div>
+            <a href="../post_details/{{post.id}}" style="color: black;text-decoration: solid;"><strong>{{post.name_post}}</strong></a>
+            <p>{{post.txt_post}}</p>
+            <i>{{post.date}}</i>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

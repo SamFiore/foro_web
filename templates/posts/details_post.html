@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Post</title>
+</head>
+<body>
+    <div> <a href="{% url 'index' %}" style="color: black;text-decoration: none;"><- Regresar</a></div>
+   <div>
+    <span>----</span>
+    <p>{{post.date}}</p>
+    <h1>{{post.name_post}}</h1>
+    <h3>{{post.txt_post}}</h3>
+    <a href="../profile/{{post.author.id}}" style="color: black;text-decoration: underline;"><i>{{post.author}}</i></a>
+   </div>
+   <div>
+    <form method="POST">
+        {{comment_form}}
+        {% csrf_token %}
+        <button type="submit">Enviar</button>
+    </form>
+   </div>
+   <div>
+    {% for commentary in all_commentaries %}
+    <div>
+        <p>{{commentary.comment}}</p>
+        <a href="../profile/{{commentary.author.id}}" style="color: black;text-decoration: underline;"><i>{{commentary.author}}</i></a>
+    </div>
+    {% endfor %}
+   </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Japonizando Web</title>
+</head>
+<body>
+    <h1>Principal page</h1>
+    <div>
+        {% if user.is_authenticated %}
+        <strong>Welcome {{user.username}}</strong>
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
+        <a href="{% url 'self_profile' %}">Go to profile</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{% url 'new_post' %}">Crear nuevo post</a>
+    </div>
+    <div style="display: flex; align-items: flex-start; flex-direction: column;">
+        {% for post in all_posts %}
+        <div style="display: inline-block;padding: 10px;border: 1px solid #000;border-radius: 5px;background-color: aquamarine;width: auto;
+padding: 10px;border: 1px solid #000;width: fit-content; padding: 10px;border: 1px solid #000;">
+         <a href="post_details/{{post.id}}" style="color: black;text-decoration: none;"><strong>{{post.name_post}}</strong></a>
+         <p>{{post.txt_post}}</p>
+         <a href="/profile/{{post.author.id}}" style="color: black;text-decoration: underline;"><i style="font-size: 15px;">{{post.author}}</i></a>
+        </div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
