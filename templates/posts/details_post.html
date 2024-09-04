@@ -13,6 +13,9 @@
     <h1>{{post.name_post}}</h1>
     <h3>{{post.txt_post}}</h3>
     <a href="../profile/{{post.author.id}}" style="color: black;text-decoration: underline;"><i>{{post.author}}</i></a>
+    {% if user.id == post.author.id %}
+    <a href="../post_edit/{{post.id}}">Edit post</a>
+    {% endif %}
    </div>
    <div>
     <form method="POST">

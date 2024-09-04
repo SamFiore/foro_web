@@ -40,4 +40,16 @@ def another_profile(req,id):
     posts = PostModel.objects.filter(author=user)
     return render(req,'profile/other_profiles.html',{'another_user':user,'another_post':posts})
 
+def edit_post(req,id):
+    post = get_object_or_404(PostModel,pk=id)
+    if req.method == 'POST':
+        post_form = PostForm(req.POST,instance=post)
+        post.date = datetime.now(tz=None)
+        post.save()
+        if post_form.is_valid():
+            post_form.save()
+            return redirect(f'../post_details/{id}')
+    post_form = PostForm()
+    return render(req,'posts/edit_post.html',{'post_form':post_form,'post':post})
+
 
