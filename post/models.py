@@ -14,5 +14,5 @@ class PostModel(models.Model):
     
 class CommentModel(models.Model):
     comment = models.CharField(max_length=10000)
-    post_nexus = models.ForeignKey(PostModel,on_delete=models.SET_NULL,null=True)
+    post_nexus = models.ForeignKey(PostModel,on_delete=models.CASCADE,null=True)
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)

@@ -52,4 +52,9 @@ def edit_post(req,id):
     post_form = PostForm()
     return render(req,'posts/edit_post.html',{'post_form':post_form,'post':post})
 
+def delete_post(req,id):
+    post = get_object_or_404(PostModel,pk=id)
+    if post:
+        post.delete()
+    return redirect('index')
 

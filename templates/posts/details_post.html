@@ -15,6 +15,7 @@
     <a href="../profile/{{post.author.id}}" style="color: black;text-decoration: underline;"><i>{{post.author}}</i></a>
     {% if user.id == post.author.id %}
     <a href="../post_edit/{{post.id}}">Edit post</a>
+    <a href="../delete_post/{{post.id}}" style="color: red;text-decoration: underline;">DELETE</a>
     {% endif %}
    </div>
    <div>
